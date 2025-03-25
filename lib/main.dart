@@ -9,11 +9,7 @@ void main() {
 class _ChartApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: false),
-      home: MyHomePage(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: MyHomePage());
   }
 }
 
@@ -51,8 +47,8 @@ class MyHomePageState extends State<MyHomePage> {
           series: <CartesianSeries<SalesData, String>>[
             AreaSeries<SalesData, String>(
               dataSource: data,
-              xValueMapper: (SalesData data, _) => data.year,
-              yValueMapper: (SalesData data, _) => data.sales,
+              xValueMapper: (SalesData data, int index) => data.year,
+              yValueMapper: (SalesData data, int index) => data.sales,
               color: Colors.green.withValues(alpha: 0.3),
               onCreateShader: (ShaderDetails details) {
                 return ui.Gradient.linear(
